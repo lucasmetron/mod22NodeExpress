@@ -5,5 +5,5 @@ const PORT = 5000;
 
 app.listen(PORT, () => {
     console.log(`Server running on Port: ${PORT}`)
-    console.log("teste")
+    console.log("test")
 })
