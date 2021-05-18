@@ -10,6 +10,33 @@
 
 <body>
     <h1>Hello World</h1>
+
+
+
+    <script>
+        //no arquivo html
+        fetch('http://192.168.0.105:5000/', { method: 'POST' })
+            .then(res => {
+                return res.text()
+            }).then(html => {
+                console.log(html)
+            });
+
+        fetch('http://192.168.0.105:5000/', { method: "PUT" })
+            .then(res => {
+                return res.text();
+            }).then(html => {
+                console.log(html)
+            });
+
+        fetch('http://192.168.0.105:5000/', { method: "DELETE" })
+            .then(res => {
+                return res.text();
+            }).then(html => {
+                console.log(html)
+            })
+
+    </script>
 </body>
 
 </html>
