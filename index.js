@@ -3,13 +3,24 @@ const path = require('path');
 
 const app = express(); //Desta forma inicializa o objeto express.
 
+var bodyParser = require("body-parser")
+
+let consoleBody = (req, res, next) => {
+    console.log(req.body);
+    next();
+}
+
 let mid = (req, res) => {
     res.type("html")
-    res.send("<h1>Hello world! From GET!</h1>")
+    res.send(`<h1>Hello world!`)
 };
 
 
 app.use("/meusite", express.static(path.join(__dirname, 'client'))) //função path.join() junta o endereço |___dirname substitui o ./ | 'client' é o nome da pasta onde estão os arquivos estáticos.
+
+app.use("/", express.json())
+
+app.use("/", consoleBody)
 
 app.get("/", mid)
 
