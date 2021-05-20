@@ -3,30 +3,21 @@ const path = require('path');
 
 const app = express(); //Desta forma inicializa o objeto express.
 
+let mid = (req, res) => {
+    res.type("html")
+    res.send("<h1>Hello world! From GET!</h1>")
+};
 
 
 app.use("/meusite", express.static(path.join(__dirname, 'client'))) //função path.join() junta o endereço |___dirname substitui o ./ | 'client' é o nome da pasta onde estão os arquivos estáticos.
 
-app.get("/", (req, res) => {
-    res.type("html")
-    res.send("<h1>Hello world! From GET!</h1>")
-});
+app.get("/", mid)
 
-app.post("/", (req, res) => {
-    res.type("html")
-    res.send("<h1>Hello world! From post!</h1>")
+app.put("/", mid)
 
-});
+app.post("/", mid)
 
-app.put("/", (req, res) => {
-    res.type("html");
-    res.send("<h1>Hello world! From put!</h1>")
-});
-
-app.delete("/", (req, res) => {
-    res.type("html");
-    res.send("<h1>Hello world! From delete!</h1>")
-})
+app.delete("/", mid)
 
 
 const PORT = 5000;
